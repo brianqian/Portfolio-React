@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
+import Header from '../components/Header';
+import { Route } from 'react-router-dom';
 
 class AboutMe extends Component {
   render() {
     return (
       <div>
-        <header> header bar with interests</header>
-
+        <Header />
         <p>general about me.</p>
       </div>
     );
