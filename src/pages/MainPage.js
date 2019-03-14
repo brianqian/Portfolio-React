@@ -37,12 +37,14 @@ const GlobalContainer = styled.div`
   width: 100vw;
   display: grid;
   justify-content: center;
-  grid-template-rows: 10% 80% 10%;
+  grid-template-rows: 1fr 8fr 1fr;
 `;
 
 const PageContainer = styled.div`
   display: flex;
-  width: ${props => (props.selected ? '100vw' : '100%')}
+  height: 100%;
+  width: ${props => (props.baseView ? '100%' : '100vw')};
+  z-index: 0;
   /* animation: ${fadeIn} 3s linear; */
 `;
 
@@ -53,43 +55,68 @@ const Title = styled.h1`
 `;
 
 const ClickOverlay = styled.div`
-  height: 400px;
-  width: 200px;
+  display: flex;
+  height: 100%;
   background-color: transparent;
-  z-index: 1;
+  z-index: ${props => (props.baseView ? 1 : -1)};
 `;
 
 const Placeholder = styled.div`
-  height: ${props => (props.selected ? '100%' : '400px')};
-  width: ${props => (props.selected ? '100vw' : '200px')};
   background-color: #d1afd4;
-  border: 2px #d1afd4 solid;
-  z-index: ${props => (props.selected ? 5 : -1)};
+  border: ${props => (props.selected || props.baseView ? '2px #891494 solid' : 'none')};
+  box-sizing: border-box;
+  position: relative;
+  transition: all 0.5s;
+  height: ${props => (props.selected ? '100%' : '0')};
+  width: ${props => (props.selected ? '92vw' : '0')};
+  z-index: ${props => (props.selected ? 2 : -1)};
+  ${props =>
+    props.baseView ? 'height: 100%; width: 200px;' : ''} /* height: 100%;
+  width: 200px; */
 `;
+
+// const pPlaceholder = styled(aPlaceholder)`
+//   height: ${props => (props.selected ? '100%' : '100%')};
+//   width: ${props => (props.selected  ? '100vw' : '200px')};
+//   z-index: ${props => (props.selected ? 5 : -1)};
+
+// `
 
 class MainPage extends Component {
   state = {
-    aboutSelected: false,
-    portfolioSelected: false,
+    baseView: true,
+    aSelected: false,
+    pSelected: false,
   };
 
-  onOpen = e => {
-    const name = `${e.target.id}Selected`;
-    this.setState({ [name]: !this.state[name] });
+  toggleSelected = async e => {
+    if (this.state.baseView) {
+      const selected = `${e.currentTarget.id}Selected`;
+      await this.setState({ [selected]: !this.state[selected], baseView: false });
+    }
+  };
+
+  closeBox = e => {
+    e.stopPropagation();
+    this.setState({ baseView: true, aSelected: false, pSelected: false });
   };
 
   render() {
-    const { bgColor, aboutSelected, portfolioSelected } = this.state;
+    const { bgColor, aSelected, pSelected, baseView } = this.state;
     return (
       <GlobalContainer>
         <Title>Hi I'm Brian</Title>
-        <PageContainer selected={aboutSelected || portfolioSelected}>
-          <ClickOverlay onClick={this.onOpen}>
-            <Placeholder id="about" selected={aboutSelected} />
+        <PageContainer data="container" baseView={baseView}>
+          <ClickOverlay id="a" data="overlay" baseView={baseView} onClick={this.toggleSelected}>
+            <AboutMe data="placeholder" selected={aSelected} baseView={baseView}>
+              {!baseView && aSelected && <button onClick={this.closeBox}>CLOSE</button>}
+            </AboutMe>
             {/* <AboutMe /> */}
           </ClickOverlay>
-          <ClickOverlay onClick={this.onOpen}>
-            <Placeholder id="portfolio" selected={portfolioSelected} />
+          <ClickOverlay id="p" baseView={baseView} onClick={this.toggleSelected}>
+            <Placeholder selected={pSelected} baseView={baseView}>
+              {!baseView && pSelected && <button onClick={this.closeBox}>CLOSE</button>}
+            </Placeholder>
 
             {/* <Portfolio /> */}
           </ClickOverlay>
