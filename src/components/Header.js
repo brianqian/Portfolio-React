@@ -2,20 +2,13 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-const Container = styled.header`
-  display: flex;
-  justify-content: space-between;
-  width: 35vw;
-  > * {
-    color: white;
-  }
-`;
-
-function Header() {
+function Header({ className }) {
   return (
-    <Container>
-      <p>hold</p>
-    </Container>
+    <div className={className}>
+      <Link to="/">Home</Link>
+      <Link to="/about">About</Link>
+      <Link to="/portfolio">Portfolio</Link>
+    </div>
   );
 }
 

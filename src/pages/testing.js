@@ -36,12 +36,10 @@ const Container = styled.div`
 `;
 
 const Text = styled.h1`
-position: relative;
-left: 45%;
-top: 0%;
-color: white;
-  overflow: hidden;
-  border-right: 0.1em white;
+  position: relative;
+  left: 45%;
+  top: 0%;
+  color: white;
   margin: 0 auto;
   animation: ${moveAround} 2s linear;
   /* animation: ${typeOut} 2s alternate, ${blinkCarat} 0.75 step-end infinite; */

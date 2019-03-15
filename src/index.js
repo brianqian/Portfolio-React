@@ -1,25 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import MainPage from './pages/MainPage';
-import { createGlobalStyle } from 'styled-components';
+import App from './pages/App';
 
-const GlobalStyle = createGlobalStyle`
+import { BrowserRouter as Router } from 'react-router-dom';
 
-body{
-  background-color: #333;
-  margin: 0;
-  height: 100vh;
-  color: #eaeaea;
-  font-family: 'PT Sans Narrow'
-}
-`;
-const MainWithStyle = function() {
-  return (
-    <div>
-      <GlobalStyle />
-      <MainPage />
-    </div>
-  );
-};
-
-ReactDOM.render(<MainWithStyle />, document.getElementById('root'));
+ReactDOM.render(<App />, document.getElementById('root'));
