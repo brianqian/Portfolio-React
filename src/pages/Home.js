@@ -1,23 +1,33 @@
 import React from 'react';
-import styled, { keyframes } from 'styled-components';
-import { fadeIn, slideOutLeft } from '../utils/keyframes';
+import styled from 'styled-components';
+import { slideInRight, slideOutLeft, slideInLeft } from '../utils/keyframes';
 
 const Container = styled.div`
-  width: 100%;
-  min-height: 100%;
+  min-width: 100vw;
+  display: flex;
   background-color: black;
+  border: 1rem white solid;
   &.page-enter {
-    animation: ${fadeIn} 1s linear;
+    animation: ${slideInLeft} 0.2s forwards;
   }
   &.page-exit {
-    animation: ${slideOutLeft} 1s linear;
+    animation: ${slideOutLeft} 0.2s forwards;
+    overflow: hidden;
+    max-width: 0vw;
+  }
+  &.page-exit-done {
+    display: none;
   }
 `;
 const Title = styled.h1`
   text-align: center;
 `;
 function Home() {
-  return <Container>Hi I'm Brian</Container>;
+  return (
+    <Container>
+      <p>Hi I'm Brian</p>
+    </Container>
+  );
 }
 
 export default Home;

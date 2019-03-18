@@ -7,6 +7,8 @@ import styled, { keyframes, createGlobalStyle } from 'styled-components';
 import Header from '../components/Header';
 import Home from '../pages/Home';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
+import Example1 from '../pages/example1';
+import Example2 from '../pages/example2';
 
 const GlobalStyle = createGlobalStyle`
 
@@ -42,6 +44,8 @@ const Main = styled.main`
   flex: 9;
   max-width: 100vw;
   overflow: auto;
+  height: 100%;
+  display: flex;
 `;
 const PageContainer = styled.div`
   display: flex;
@@ -57,14 +61,14 @@ class App extends Component {
     return (
       <Router>
         <Route
-          render={({ location }) => {
+          render={({ location, ...props }) => {
             return (
               <PageContainer>
                 <GlobalStyle />
                 <StyledHeader />
                 <Main>
                   <TransitionGroup component={null}>
-                    <CSSTransition timeout={2000} classNames="page" key={location.key}>
+                    <CSSTransition timeout={500} classNames="page" key={location.key}>
                       <Switch location={location}>
                         <Route exact path="/" component={Home} />
                         <Route exact path="/about" component={AboutMe} />
