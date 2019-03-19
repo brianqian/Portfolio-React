@@ -3,8 +3,10 @@ import styled, { createGlobalStyle } from 'styled-components';
 import AboutMe from '../pages/AboutMe';
 import Portfolio from '../pages/Portfolio';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import NavBar from '../components/NavBar';
 
 const GlobalStyle = createGlobalStyle`
+@import url('https://fonts.googleapis.com/css?family=Roboto');
 body, html{
   margin: 0;
   background-color: whitesmoke;
@@ -19,22 +21,6 @@ const Container = styled.div`
   overflow: auto;
   padding: 1rem 3rem;
 `;
-
-const NavBar = function({ className }) {
-  return (
-    <ul className={className}>
-      <li>
-        <img src="./img/circle-outline.svg" height="15px" alt="" />
-      </li>
-      <li>
-        <img src="./img/circle-outline.svg" height="15px" alt="" />
-      </li>
-      <li>
-        <img src="./img/circle-outline.svg" height="15px" alt="" />
-      </li>
-    </ul>
-  );
-};
 
 const StyledNav = styled(NavBar)`
   margin: 0;

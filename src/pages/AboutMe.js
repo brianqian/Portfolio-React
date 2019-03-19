@@ -2,9 +2,12 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 
 const Container = styled.div`
-  background-color: #eaeaea;
+  background-color: #0c1821;
+  color: #ccc9dc;
+  font-family: 'Roboto';
   height: 60vh;
   text-align: center;
+  padding: 3rem;
 `;
 
 class AboutMe extends Component {
