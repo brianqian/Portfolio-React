@@ -10,6 +10,9 @@ const Container = styled.div`
   height: 75vh;
   text-align: center;
   padding: 3rem;
+  border-radius: 20px;
+  margin-bottom: 2rem;
+  box-sizing: border-box;
 `;
 
 const ArrowContainer = styled.span`
@@ -61,13 +64,13 @@ class AboutMe extends Component {
         <p>...and this is my portfolio page.</p>
         <DeveloperLine>
           <div>
-            I'm from the Bay Area and I'm a{' '}
+            I'm from the Bay Area and I'm a
             <span>{` ${aboutData[this.state.selectionIndex].title}`}</span>
           </div>
           <img onClick={this.nextSelection} src="./img/up-orange.svg" alt="" />
           <img onClick={this.prevSelection} src="./img/down-orange.svg" alt="" />
         </DeveloperLine>
-        <div>{moreInfo}</div>
+        {/* <div>{moreInfo}</div> */}
       </Container>
     );
   }

@@ -6,8 +6,6 @@ const Container = styled.div`
   font-size: 1.3rem;
   color: white;
   display: grid;
-  /* grid-template-columns: repeat(auto-fit);
-  grid-template-rows: 0.5fr repeat(4, 2fr); */
   grid-auto-flow: dense;
   padding: 2rem;
   min-width: calc(100% - 4rem);
@@ -32,9 +30,10 @@ const Image = styled.div`
   grid-row: 2/3; */
 `;
 
-const NavBar = styled.div`
-  /* grid-row: 1;
-  grid-column: 1/-1; */
+const ImageContainer = styled.div`
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 1rem;
 `;
 
 class PortfolioItem extends Component {
@@ -43,14 +42,15 @@ class PortfolioItem extends Component {
     const joinStack = stack.join(', ');
     return (
       <Container>
-        {/* <img src={img} alt="" /> */}
-        <NavBar>scroll navbar container</NavBar>
         <Title>
           <h1>{title}</h1>
           <p>{joinStack}</p>
         </Title>
-
-        <Image style={{ height: '200px', width: '400px', backgroundColor: 'black' }} />
+        <ImageContainer>
+          <Image style={{ height: '200px', width: '100%', backgroundColor: 'black' }} />
+          <Image style={{ height: '200px', width: '100%', backgroundColor: 'black' }} />
+          <Image style={{ height: '200px', width: '100%', backgroundColor: 'black' }} />
+        </ImageContainer>
 
         <Description>{desc}</Description>
       </Container>
