@@ -4,13 +4,15 @@ import styled from 'styled-components';
 const Component = styled.div`
   margin: 0;
   width: 3rem;
-  min-height: 100vh;
-  position: fixed;
   display: flex;
+  grid-row: 1;
+  overflow: hidden;
+  max-height: 100%;
   align-items: center;
   justify-content: center;
+  justify-self: center;
   flex-direction: column;
-  left: 0;
+
   > * {
     list-style: none;
     padding: 1rem 0;

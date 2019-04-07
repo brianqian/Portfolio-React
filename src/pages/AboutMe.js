@@ -4,28 +4,16 @@ import aboutData from '../data/AboutData';
 
 const Container = styled.div`
   background-color: #0c1821;
-  color: #ccc9dc;
+  color: #d6bb33;
   font-family: 'Cutive Mono';
-  font-size: 1.25rem;
-  height: 75vh;
+  font-size: 1.15rem;
   text-align: center;
-  padding: 3rem;
-  border-radius: 20px;
-  margin-bottom: 2rem;
+  border-radius: 5px;
   box-sizing: border-box;
-`;
-
-const ArrowContainer = styled.span`
-  height: 1.15rem;
+  min-height: 100%;
   display: flex;
-  align-items: center;
-  justify-content: center;
   flex-direction: column;
-  margin: 0 0.5rem;
-  > * {
-    height: 0.6rem;
-    width: 8px;
-  }
+  /* justify-content: center; */
 `;
 
 const DeveloperLine = styled.div`
@@ -36,6 +24,16 @@ const DeveloperLine = styled.div`
     height: 1rem;
     width: 1rem;
     padding: 0.25rem;
+  }
+`;
+
+const SkillGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  width: 80%;
+  margin: auto;
+  > p {
+    margin: 0.5rem;
   }
 `;
 
@@ -58,19 +56,41 @@ class AboutMe extends Component {
     const moreInfo = aboutData[this.state.selectionIndex].body.map(line => {
       return <p>{line}</p>;
     });
+    const currentSkills = [
+      'Javascript',
+      'React',
+      'Redux',
+      'Node',
+      'Express',
+      'SQL',
+      'MongoDB',
+      'Jest',
+      'Enzyme',
+      'jQuery',
+    ].map(skill => <p>{skill}</p>);
     return (
       <Container id="about">
         <h1>Hi my name is Brian</h1>
-        <p>...and this is my portfolio page.</p>
-        <DeveloperLine>
-          <div>
-            I'm from the Bay Area and I'm a
-            <span>{` ${aboutData[this.state.selectionIndex].title}`}</span>
-          </div>
-          <img onClick={this.nextSelection} src="./img/up-orange.svg" alt="" />
+        {/* <DeveloperLine> */}
+        <div>I'm from the Bay Area and I'm a Web Developer.</div>
+        {/* <img onClick={this.nextSelection} src="./img/up-orange.svg" alt="" />
           <img onClick={this.prevSelection} src="./img/down-orange.svg" alt="" />
         </DeveloperLine>
-        {/* <div>{moreInfo}</div> */}
+        <div>{moreInfo}</div> */}
+        <div>
+          <p>
+            Current skills:
+            <SkillGrid>{currentSkills}</SkillGrid>
+          </p>
+          <p>
+            I've always enjoyed taking things apart and exploring complex systems. I've always had a
+            passion for computers and puzzles so coding seemed like a natural progression.{' '}
+          </p>
+          <p>
+            Outside of coding some of my favorite activities are rock climbing, board games, and
+            seeing live music.
+          </p>
+        </div>
       </Container>
     );
   }

@@ -7,9 +7,7 @@ const Container = styled.div`
   color: white;
   display: grid;
   grid-auto-flow: dense;
-  padding: 2rem;
-  min-width: calc(100% - 4rem);
-  max-width: calc(100% - 4rem);
+  min-width: 100%;
   scroll-snap-align: start;
 `;
 

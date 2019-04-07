@@ -5,11 +5,11 @@ import portfolioData from '../data/PortfolioData';
 
 const Page = styled.div`
   max-width: 100vw;
-  height: 100vh;
+  /* height: 100%; */
+  grid-row: 2;
+  grid-column: 2;
   overflow: auto;
-  min-height: 100vh;
-  background-color: #1b2a41;
-  border-radius: 20px;
+  background-color: #0c1820;
 `;
 
 const ContentContainer = styled.div`
@@ -37,7 +37,9 @@ class Portfolio extends Component {
     return (
       <Page id="portfolio">
         <NavBar>scroll navbar container</NavBar>
-        <ContentContainer itemCount={portfolioData.length}>{content}</ContentContainer>
+        <ContentContainer width={portfolioData.length} itemCount={portfolioData.length}>
+          {content}
+        </ContentContainer>
       </Page>
     );
   }

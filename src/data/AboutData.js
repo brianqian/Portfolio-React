@@ -2,9 +2,11 @@ const data = [
   {
     title: 'Web Developer',
     body: [
-      'Skills: Javascript, React, Redux, Node, Express, SQL, MongoDB, Git, Jest, Enzyme, jQuery',
-      'Learning: GraphQL, Apollo, Postgres',
-      "Looking for work as a full stack developer and leaning towards front-end development. I'm always looking for ways to be a better coder. ",
+      'Current skills: Javascript, React, Redux, Node, Express, SQL, MongoDB, Git, Jest, Enzyme, jQuery',
+      'Currently working on learning GraphQL and Apollo',
+      'The things I like most in life are puzzles and learning so I guess I like coding. ',
+      "I'm always looking for the best and most efficient way to do things",
+      'Outside of coding I like rock climbing, board games, and seeing live music.',
     ],
   },
   {
