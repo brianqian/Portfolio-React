@@ -8,12 +8,27 @@ const Container = styled.div`
   display: grid;
   grid-auto-flow: dense;
   min-width: 100%;
+  max-width: 100%;
   scroll-snap-align: start;
 `;
 
 const Title = styled.div`
-  /* grid-column: 1;
-  grid-row: 2; */
+  > div {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    > span {
+      background-color: #ff9007;
+      /* font-family: 'Open Sans'; */
+      font-size: 1rem;
+      border-radius: 3px;
+      padding: 4px 8px;
+      margin: 0 5px;
+    }
+  }
+  > h1 {
+    margin: 0.5rem;
+  }
 `;
 
 const Description = styled.div`
@@ -35,14 +50,29 @@ const ImageContainer = styled.div`
 `;
 
 class PortfolioItem extends Component {
+  componentDidMount = () => {
+    if (this.props.id === 'project-1') {
+      console.log('here');
+      const firstProject = document.getElementById('project-1');
+      firstProject.addEventListener('scroll', () => console.log('hello'));
+      firstProject.addEventListener('click', this.logScroll);
+    }
+  };
+  logScroll = () => {
+    const firstProject = document.getElementById('project-1');
+    firstProject.scrollLeft += 20;
+    let test = firstProject.scrollTop;
+    let test2 = firstProject.scrollLeft;
+    console.log(test, test2);
+  };
   render() {
     const { title, stack, desc, img } = this.props;
-    const joinStack = stack.join(', ');
+    const joinStack = stack.map(item => <span>{item}</span>);
     return (
-      <Container>
+      <Container id={this.props.id}>
         <Title>
           <h1>{title}</h1>
-          <p>{joinStack}</p>
+          <div>{joinStack}</div>
         </Title>
         <ImageContainer>
           <Image style={{ height: '200px', width: '100%', backgroundColor: 'black' }} />

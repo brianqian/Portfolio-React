@@ -6,9 +6,13 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import NavBar from '../components/NavBar';
 
 const GlobalStyle = createGlobalStyle`
-@import url('https://fonts.googleapis.com/css?family=Cutive+Mono|Economica|Markazi+Text');
+@import url('https://fonts.googleapis.com/css?family=Cutive+Mono|Economica|Markazi+Text|Open+Sans');
 body, html{
   margin: 0;
+}
+::-webkit-scrollbar {
+    width: 0px;
+    background: transparent;  
 }
 `;
 
@@ -33,7 +37,7 @@ const BackgroundImage = styled.div`
 
 const ContentContainer = styled.div`
   display: grid;
-  grid-template-columns: 1fr 11fr 1fr;
+  grid-template-columns: 5% 11fr 5%;
   grid-template-rows: 100%;
   background-color: #0c1821;
   color: #d6bb33;
@@ -43,7 +47,8 @@ const ContentContainer = styled.div`
   text-align: center;
   align-self: center;
   justify-self: center;
-  width: 80%;
+  width: 95%;
+  min-height: 95vh;
   margin: auto;
   border-radius: 20px;
   border: 5px solid white;
@@ -51,17 +56,21 @@ const ContentContainer = styled.div`
 
 const Content = styled.div`
   max-height: 100%;
-  width: 100%;
   overflow: auto;
+  scroll-snap-type: y mandatory;
 `;
 
 class MainPage extends Component {
-  componentDidMount = () => {
-    window.addEventListener('scroll', this.checkScroll);
-  };
-  checkScroll = e => {
-    console.log(e);
-  };
+  // componentDidMount = () => {
+  //   const test = document.getElementById('test');
+  //   test.addEventListener('scroll', this.checkScroll);
+  // };
+  // checkScroll = e => {
+  //   const test = document.getElementById('test');
+  //   let item = test.scrollY;
+  //   let item2 = test.scrollX;
+  //   console.log(item, item2, test);
+  // };
   render() {
     return (
       <Container>
@@ -69,7 +78,7 @@ class MainPage extends Component {
         <GlobalStyle />
         <ContentContainer>
           <NavBar />
-          <Content>
+          <Content id="test">
             <AboutMe />
             <Portfolio />
           </Content>

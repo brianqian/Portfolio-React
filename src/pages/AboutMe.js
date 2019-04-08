@@ -4,7 +4,7 @@ import aboutData from '../data/AboutData';
 
 const Container = styled.div`
   background-color: #0c1821;
-  color: #d6bb33;
+  color: #ff9007;
   font-family: 'Cutive Mono';
   font-size: 1.15rem;
   text-align: center;
@@ -13,6 +13,7 @@ const Container = styled.div`
   min-height: 100%;
   display: flex;
   flex-direction: column;
+  scroll-snap-align: start;
   /* justify-content: center; */
 `;
 
