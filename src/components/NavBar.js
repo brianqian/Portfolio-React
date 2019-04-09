@@ -19,21 +19,33 @@ const Component = styled.div`
   }
 `;
 
-function NavBar() {
+function NavBar({ selected }) {
   return (
     <Component>
       <li>
         <a href="#about">
-          <img src="./img/circle-outline-white.svg" height="15px" alt="" />
+          <img
+            src={`./img/circle-${selected === 0 ? 'fill' : 'outline'}-white.svg`}
+            height="15px"
+            alt=""
+          />
         </a>
       </li>
       <li>
         <a href="#portfolio">
-          <img src="./img/circle-outline-white.svg" height="15px" alt="" />
+          <img
+            src={`./img/circle-${selected === 1 ? 'fill' : 'outline'}-white.svg`}
+            height="15px"
+            alt=""
+          />
         </a>
       </li>
       <li>
-        <img src="./img/circle-outline-white.svg" height="15px" alt="" />
+        <img
+          src={`./img/circle-${selected === 2 ? 'fill' : 'outline'}-white.svg`}
+          height="15px"
+          alt=""
+        />
       </li>
     </Component>
   );

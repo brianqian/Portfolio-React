@@ -32,6 +32,10 @@ const NavBar = styled.div`
   justify-content: space-evenly;
 `;
 
+const Project = styled.span`
+  color: ${props => (props.selected ? 'orange' : 'white')};
+`;
+
 const content = portfolioData.map((item, index) => (
   <PortfolioItem
     id={`project-${index}`}
@@ -41,16 +45,25 @@ const content = portfolioData.map((item, index) => (
   />
 ));
 
-const projectTitles = portfolioData.map(item => <span>{item.title}</span>);
-
 class Portfolio extends Component {
+  state = {
+    selectedProject: 0,
+  };
+  onScroll = e => {
+    let element = e.target;
+    let ratio = element.scrollWidth / element.scrollLeft;
+    let selectedProject = Math.round(portfolioData.length / ratio);
+    if (selectedProject !== this.state.selectedProject) this.setState({ selectedProject });
+  };
   render() {
+    const projectTitles = portfolioData.map((item, i) => (
+      <Project selected={this.state.selectedProject === i ? true : false}>{item.title}</Project>
+    ));
+
     return (
       <Page id="portfolio">
         <NavBar>{projectTitles}</NavBar>
-        <ContentContainer width={portfolioData.length} itemCount={portfolioData.length}>
-          {content}
-        </ContentContainer>
+        <ContentContainer onScroll={this.onScroll}>{content}</ContentContainer>
       </Page>
     );
   }

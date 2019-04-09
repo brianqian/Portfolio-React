@@ -42,6 +42,18 @@ class AboutMe extends Component {
   state = {
     selectionIndex: 0,
   };
+
+  componentDidMount = () => {
+    const firstProject = document.getElementById('about');
+    firstProject.addEventListener('scroll', () => console.log('hello'));
+    // firstProject.addEventListener('click', this.logScroll);
+  };
+  logScroll = () => {
+    const firstProject = document.getElementById('about');
+    let test = firstProject.scrollTop;
+    let test2 = firstProject.scrollLeft;
+    console.log(test, test2);
+  };
   nextSelection = () => {
     const nextIndex = (this.state.selectionIndex + 1) % aboutData.length;
     this.setState({ selectionIndex: nextIndex });
@@ -79,10 +91,9 @@ class AboutMe extends Component {
         </DeveloperLine>
         <div>{moreInfo}</div> */}
         <div>
-          <p>
-            Current skills:
-            <SkillGrid>{currentSkills}</SkillGrid>
-          </p>
+          <p>Current skills: </p>
+          <SkillGrid>{currentSkills}</SkillGrid>
+
           <p>
             I've always enjoyed taking things apart and exploring complex systems. I've always had a
             passion for computers and puzzles so coding seemed like a natural progression.{' '}

@@ -50,21 +50,6 @@ const ImageContainer = styled.div`
 `;
 
 class PortfolioItem extends Component {
-  componentDidMount = () => {
-    if (this.props.id === 'project-1') {
-      console.log('here');
-      const firstProject = document.getElementById('project-1');
-      firstProject.addEventListener('scroll', () => console.log('hello'));
-      firstProject.addEventListener('click', this.logScroll);
-    }
-  };
-  logScroll = () => {
-    const firstProject = document.getElementById('project-1');
-    firstProject.scrollLeft += 20;
-    let test = firstProject.scrollTop;
-    let test2 = firstProject.scrollLeft;
-    console.log(test, test2);
-  };
   render() {
     const { title, stack, desc, img } = this.props;
     const joinStack = stack.map(item => <span>{item}</span>);

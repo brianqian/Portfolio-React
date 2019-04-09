@@ -37,18 +37,17 @@ const BackgroundImage = styled.div`
 
 const ContentContainer = styled.div`
   display: grid;
-  grid-template-columns: 5% 11fr 5%;
+  grid-template-columns: 5% 90% 5%;
   grid-template-rows: 100%;
   background-color: #0c1821;
   color: #d6bb33;
   font-family: 'Cutive Mono';
   font-size: 1.15rem;
-  max-height: 80vh;
   text-align: center;
   align-self: center;
   justify-self: center;
+  max-height: 95vh;
   width: 95%;
-  min-height: 95vh;
   margin: auto;
   border-radius: 20px;
   border: 5px solid white;
@@ -61,24 +60,33 @@ const Content = styled.div`
 `;
 
 class MainPage extends Component {
-  // componentDidMount = () => {
-  //   const test = document.getElementById('test');
-  //   test.addEventListener('scroll', this.checkScroll);
-  // };
-  // checkScroll = e => {
-  //   const test = document.getElementById('test');
-  //   let item = test.scrollY;
-  //   let item2 = test.scrollX;
-  //   console.log(item, item2, test);
-  // };
+  state = {
+    selectedSection: 0,
+  };
+
+  onScroll = e => {
+    const element = e.target;
+    const ratio = element.scrollHeight / element.scrollTop;
+    const numOfSections = 2;
+    const selectedSection = element.scrollLeft ? 1 : Math.round(numOfSections / ratio);
+    if (selectedSection !== this.state.selectedSection) this.setState({ selectedSection });
+    // console.log(element);
+    // let selectedProject = Math.round(portfolioData.length / ratio);
+    // if (selectedProject !== this.state.selectedProject) this.setState({ selectedProject });
+  };
+
+  componentWillUnmount() {
+    console.log('hi');
+  }
+
   render() {
     return (
       <Container>
         <BackgroundImage />
         <GlobalStyle />
         <ContentContainer>
-          <NavBar />
-          <Content id="test">
+          <NavBar selected={this.state.selectedSection} />
+          <Content onScroll={this.onScroll}>
             <AboutMe />
             <Portfolio />
           </Content>
