@@ -5,11 +5,12 @@ const Container = styled.div`
   font-family: 'Economica';
   font-size: 1.3rem;
   color: white;
-  display: grid;
-  grid-auto-flow: dense;
   min-width: 100%;
   max-width: 100%;
   scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
 `;
 
 const Title = styled.div`
@@ -47,6 +48,7 @@ const ImageContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 1rem;
+  align-items: center;
 `;
 
 class PortfolioItem extends Component {
@@ -64,7 +66,6 @@ class PortfolioItem extends Component {
           <Image style={{ height: '200px', width: '100%', backgroundColor: 'black' }} />
           <Image style={{ height: '200px', width: '100%', backgroundColor: 'black' }} />
         </ImageContainer>
-
         <Description>{desc}</Description>
       </Container>
     );

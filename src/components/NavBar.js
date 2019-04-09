@@ -19,29 +19,28 @@ const Component = styled.div`
   }
 `;
 
-function NavBar({ selected }) {
+function NavBar({ selected, scrollFn }) {
   return (
     <Component>
       <li>
-        <a href="#about">
-          <img
-            src={`./img/circle-${selected === 0 ? 'fill' : 'outline'}-white.svg`}
-            height="15px"
-            alt=""
-          />
-        </a>
-      </li>
-      <li>
-        <a href="#portfolio">
-          <img
-            src={`./img/circle-${selected === 1 ? 'fill' : 'outline'}-white.svg`}
-            height="15px"
-            alt=""
-          />
-        </a>
+        <img
+          onClick={() => scrollFn(0)}
+          src={`./img/circle-${selected === 0 ? 'fill' : 'outline'}-white.svg`}
+          height="15px"
+          alt=""
+        />
       </li>
       <li>
         <img
+          onClick={() => scrollFn(1)}
+          src={`./img/circle-${selected === 1 ? 'fill' : 'outline'}-white.svg`}
+          height="15px"
+          alt=""
+        />
+      </li>
+      <li>
+        <img
+          onClick={() => scrollFn(2)}
           src={`./img/circle-${selected === 2 ? 'fill' : 'outline'}-white.svg`}
           height="15px"
           alt=""

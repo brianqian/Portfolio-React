@@ -4,6 +4,7 @@ import AboutMe from '../pages/AboutMe';
 import Portfolio from '../pages/Portfolio';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import NavBar from '../components/NavBar';
+import Contact from '../pages/Contact';
 
 const GlobalStyle = createGlobalStyle`
 @import url('https://fonts.googleapis.com/css?family=Cutive+Mono|Economica|Markazi+Text|Open+Sans');
@@ -50,9 +51,10 @@ const ContentContainer = styled.div`
   width: 95%;
   margin: auto;
   border-radius: 20px;
-  border: 5px solid white;
+  border: 5px solid rgb(255, 255, 255);
 `;
-
+//border target (rgb (255, 144, 10)
+//change 0, -111, -245
 const Content = styled.div`
   max-height: 100%;
   overflow: auto;
@@ -62,22 +64,38 @@ const Content = styled.div`
 class MainPage extends Component {
   state = {
     selectedSection: 0,
+    scrollHeight: 0,
+    scrollTop: 0,
+    numOfSections: 3,
+  };
+  componentDidMount = async () => {
+    const content = document.getElementById('content');
+    const { scrollHeight } = content;
+    await this.setState({ scrollHeight });
+    console.log(this.state);
   };
 
-  onScroll = e => {
-    const element = e.target;
-    const ratio = element.scrollHeight / element.scrollTop;
-    const numOfSections = 2;
-    const selectedSection = element.scrollLeft ? 1 : Math.round(numOfSections / ratio);
-    if (selectedSection !== this.state.selectedSection) this.setState({ selectedSection });
-    // console.log(element);
-    // let selectedProject = Math.round(portfolioData.length / ratio);
-    // if (selectedProject !== this.state.selectedProject) this.setState({ selectedProject });
+  selectActiveOnScroll = e => {
+    const content = e.target;
+    const { scrollHeight, scrollTop } = content;
+    const ratio = scrollHeight / scrollTop;
+    const selectedSection = Math.round(this.state.numOfSections / ratio);
+    if (selectedSection !== this.state.selectedSection)
+      this.setState({ selectedSection, scrollTop });
   };
 
-  componentWillUnmount() {
-    console.log('hi');
-  }
+  navBarScroll = pageIndex => {
+    const { scrollHeight, selectedSection, numOfSections } = this.state;
+    const content = document.getElementById('content');
+    const distance = (pageIndex - selectedSection) * (scrollHeight / numOfSections);
+    content.scrollBy({ top: distance, behavior: 'smooth' });
+    //find total height
+
+    //find scrollTop of target section
+    //find scrollTop of current Section
+    //increment/decrement
+    //consider making navbar content generated via map
+  };
 
   render() {
     return (
@@ -85,10 +103,11 @@ class MainPage extends Component {
         <BackgroundImage />
         <GlobalStyle />
         <ContentContainer>
-          <NavBar selected={this.state.selectedSection} />
-          <Content onScroll={this.onScroll}>
+          <NavBar scrollFn={this.navBarScroll} selected={this.state.selectedSection} />
+          <Content id="content" onScroll={this.selectActiveOnScroll}>
             <AboutMe />
             <Portfolio />
+            <Contact />
           </Content>
         </ContentContainer>
       </Container>
