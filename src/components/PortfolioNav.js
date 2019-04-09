@@ -8,6 +8,9 @@ const Container = styled.div`
   display: flex;
   max-width: 100%;
   justify-content: space-evenly;
+  > * {
+    cursor: pointer;
+  }
 `;
 
 function PortfolioNav({ children }) {

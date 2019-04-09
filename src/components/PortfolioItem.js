@@ -18,6 +18,7 @@ const Title = styled.div`
     display: flex;
     width: 100%;
     justify-content: center;
+    cursor: default;
     > span {
       background-color: #ff9007;
       /* font-family: 'Open Sans'; */
@@ -39,16 +40,22 @@ const Description = styled.div`
   align-self: center;
 `;
 
-const Image = styled.div`
-  /* grid-column: 2;
-  grid-row: 2/3; */
-`;
-
 const ImageContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 1rem;
   align-items: center;
+  @media (max-width: 780px) {
+    grid-template-columns: 1fr;
+  }
+  > div {
+    @media (max-width: 780px) {
+      display: none;
+      :nth-child(1) {
+        display: block;
+      }
+    }
+  }
 `;
 
 class PortfolioItem extends Component {
@@ -62,9 +69,9 @@ class PortfolioItem extends Component {
           <div>{joinStack}</div>
         </Title>
         <ImageContainer>
-          <Image style={{ height: '200px', width: '100%', backgroundColor: 'black' }} />
-          <Image style={{ height: '200px', width: '100%', backgroundColor: 'black' }} />
-          <Image style={{ height: '200px', width: '100%', backgroundColor: 'black' }} />
+          <div style={{ height: '200px', width: '100%', backgroundColor: 'black' }} />
+          <div style={{ height: '200px', width: '100%', backgroundColor: 'black' }} />
+          <div style={{ height: '200px', width: '100%', backgroundColor: 'black' }} />
         </ImageContainer>
         <Description>{desc}</Description>
       </Container>

@@ -13,9 +13,12 @@ const Component = styled.div`
   justify-self: center;
   flex-direction: column;
 
-  > * {
+  > li {
     list-style: none;
     padding: 1rem 0;
+    > img {
+      cursor: pointer;
+    }
   }
 `;
 

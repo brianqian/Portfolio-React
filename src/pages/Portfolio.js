@@ -46,6 +46,9 @@ class Portfolio extends Component {
   state = {
     selectedProject: 0,
   };
+  componentDidMount() {
+    this.setState({ numOfProjects: portfolioData.length });
+  }
 
   onScroll = e => {
     e.stopPropagation();
@@ -57,8 +60,10 @@ class Portfolio extends Component {
 
   navBarOnClick = target => {
     const portfolio = document.getElementById('portfolio');
-    const { scrollWidth, scrollLeft } = portfolio;
-    console.log(target);
+    const { scrollWidth } = portfolio;
+    const { selectedProject, numOfProjects } = this.state;
+    const distance = (target - selectedProject) * (scrollWidth / numOfProjects);
+    portfolio.scrollBy({ left: distance, behavior: 'smooth' });
   };
   render() {
     const projectTitles = portfolioData.map((item, i) => (

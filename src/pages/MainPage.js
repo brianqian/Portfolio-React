@@ -72,7 +72,6 @@ class MainPage extends Component {
     const content = document.getElementById('content');
     const { scrollHeight } = content;
     await this.setState({ scrollHeight });
-    console.log(this.state);
   };
 
   selectActiveOnScroll = e => {
@@ -84,17 +83,11 @@ class MainPage extends Component {
       this.setState({ selectedSection, scrollTop });
   };
 
-  navBarScroll = pageIndex => {
+  navBarOnClick = pageIndex => {
     const { scrollHeight, selectedSection, numOfSections } = this.state;
     const content = document.getElementById('content');
     const distance = (pageIndex - selectedSection) * (scrollHeight / numOfSections);
     content.scrollBy({ top: distance, behavior: 'smooth' });
-    //find total height
-
-    //find scrollTop of target section
-    //find scrollTop of current Section
-    //increment/decrement
-    //consider making navbar content generated via map
   };
 
   render() {
@@ -103,7 +96,7 @@ class MainPage extends Component {
         <BackgroundImage />
         <GlobalStyle />
         <ContentContainer>
-          <NavBar scrollFn={this.navBarScroll} selected={this.state.selectedSection} />
+          <NavBar scrollFn={this.navBarOnClick} selected={this.state.selectedSection} />
           <Content id="content" onScroll={this.selectActiveOnScroll}>
             <AboutMe />
             <Portfolio />
