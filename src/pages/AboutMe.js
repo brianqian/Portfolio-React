@@ -7,7 +7,7 @@ const Container = styled.div`
   background-color: #0c1821;
   color: #fff;
   font-family: 'Cutive Mono';
-  font-size: 1.15rem;
+  font-size: 1.15em;
   text-align: center;
   border-radius: 5px;
   box-sizing: border-box;

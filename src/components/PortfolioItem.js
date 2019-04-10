@@ -3,14 +3,14 @@ import styled from 'styled-components';
 
 const Container = styled.div`
   font-family: 'Economica';
-  font-size: 1.3rem;
+  font-size: 1.3em;
   color: white;
   min-width: 100%;
   max-width: 100%;
   scroll-snap-align: start;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: flex-start;
 `;
 
 const Title = styled.div`
@@ -22,7 +22,7 @@ const Title = styled.div`
     > span {
       background-color: #ff9007;
       /* font-family: 'Open Sans'; */
-      font-size: 1rem;
+      font-size: 0.75em;
       border-radius: 3px;
       padding: 4px 8px;
       margin: 0 5px;
@@ -35,8 +35,6 @@ const Title = styled.div`
 
 const Description = styled.div`
   font-family: 'Markazi Text';
-  /* grid-column: 1/2;
-  grid-row: 3/5; */
   align-self: center;
 `;
 
@@ -45,10 +43,13 @@ const ImageContainer = styled.div`
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 1rem;
   align-items: center;
+
   @media (max-width: 780px) {
     grid-template-columns: 1fr;
   }
   > div {
+    margin: 1.5rem 0;
+    box-sizing: border-box;
     @media (max-width: 780px) {
       display: none;
       :nth-child(1) {

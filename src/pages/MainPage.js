@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import styled, { createGlobalStyle } from 'styled-components';
 import AboutMe from '../pages/AboutMe';
 import Portfolio from '../pages/Portfolio';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import NavBar from '../components/NavBar';
 import Contact from '../pages/Contact';
 
@@ -10,6 +9,7 @@ const GlobalStyle = createGlobalStyle`
 @import url('https://fonts.googleapis.com/css?family=Cutive+Mono|Economica|Markazi+Text|Open+Sans');
 body, html{
   margin: 0;
+  font-size: 100%;
 }
 ::-webkit-scrollbar {
     width: 0px;
@@ -43,12 +43,12 @@ const ContentContainer = styled.div`
   background-color: #0c1821;
   color: #d6bb33;
   font-family: 'Cutive Mono';
-  font-size: 1.15rem;
+  font-size: 1.15em;
   text-align: center;
   align-self: center;
   justify-self: center;
   max-height: 95vh;
-  width: 95%;
+  width: 95vw;
   margin: auto;
   border-radius: 20px;
   border: 5px solid rgb(255, 255, 255);
@@ -64,14 +64,8 @@ const Content = styled.div`
 class MainPage extends Component {
   state = {
     selectedSection: 0,
-    scrollHeight: 0,
     scrollTop: 0,
     numOfSections: 3,
-  };
-  componentDidMount = async () => {
-    const content = document.getElementById('content');
-    const { scrollHeight } = content;
-    await this.setState({ scrollHeight });
   };
 
   selectActiveOnScroll = e => {
@@ -84,9 +78,9 @@ class MainPage extends Component {
   };
 
   navBarOnClick = pageIndex => {
-    const { scrollHeight, selectedSection, numOfSections } = this.state;
+    const { selectedSection, numOfSections } = this.state;
     const content = document.getElementById('content');
-    const distance = (pageIndex - selectedSection) * (scrollHeight / numOfSections);
+    const distance = (pageIndex - selectedSection) * (content.scrollHeight / numOfSections);
     content.scrollBy({ top: distance, behavior: 'smooth' });
   };
 
