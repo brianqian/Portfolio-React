@@ -90,12 +90,14 @@ class AboutMe extends Component {
           <p>Current skills: </p>
           <SkillGrid>{currentSkills}</SkillGrid>
           <p>
-            I've always enjoyed taking things apart and exploring complex systems. I've always had a
-            passion for computers and puzzles so coding seemed like a natural progression.
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore veniam earum odit
+            eveniet at ratione, voluptatum aspernatur voluptas quaerat eligendi totam perferendis
+            qui pariatur ad expedita amet vitae. Numquam, quod.
           </p>
           <p>
-            Outside of coding some of my favorite activities are rock climbing, board games, and
-            seeing live music.
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorem ipsum molestias,
+            veniam obcaecati quasi aliquid repellat reprehenderit labore sint sed blanditiis, sunt
+            adipisci nulla consequatur delectus, odio asperiores dolores! Veniam?
           </p>
         </div>
       </Container>
