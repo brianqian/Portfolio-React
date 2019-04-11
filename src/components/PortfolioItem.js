@@ -11,6 +11,9 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  > h1 {
+    margin: 0;
+  }
 `;
 
 const Stack = styled.div`
@@ -20,7 +23,7 @@ const Stack = styled.div`
   cursor: default;
   > span {
     background-color: #ff9007;
-    font-size: 0.75em;
+    font-size: 0.65em;
     border-radius: 3px;
     padding: 4px 8px;
     margin: 0 5px;
@@ -44,7 +47,7 @@ const ImageContainer = styled.div`
     grid-template-columns: 1fr;
   }
   > div {
-    margin: 1.5rem 0;
+    margin: 1.5rem 0 0 0;
     box-sizing: border-box;
     @media (max-width: 780px) {
       display: none;
@@ -55,32 +58,34 @@ const ImageContainer = styled.div`
   }
 `;
 
-const Title = styled.div`
+const Links = styled.div`
   display: flex;
+  width: 100%;
   justify-content: center;
-  align-items: center;
-  > h1 {
-    margin: 0.5rem;
-  }
   > a {
     height: 100%;
     display: flex;
+    margin: 0 1rem;
     align-items: center;
+    text-decoration: none;
+    > p {
+      font-size: 0.75em;
+      color: white;
+      margin: 0 0.5rem;
+      :hover {
+        color: #ff9007;
+      }
+    }
   }
 `;
 
 class PortfolioItem extends Component {
   render() {
-    const { title, stack, desc, img, git } = this.props;
+    const { title, stack, desc, img, gitURL, deployURL } = this.props;
     const joinStack = stack.map(item => <span>{item}</span>);
     return (
       <Container id={this.props.id}>
-        <Title>
-          <h1>{title} </h1>
-          <a href={git} rel="noopener noreferrer" target="_blank">
-            <img src="./img/GitHub-Light-64px.png" height="30px" alt="" />
-          </a>
-        </Title>
+        <h1>{title} </h1>
 
         <Stack>{joinStack}</Stack>
         <ImageContainer>
@@ -88,6 +93,16 @@ class PortfolioItem extends Component {
           <div style={{ height: '200px', width: '100%', backgroundColor: 'black' }} />
           <div style={{ height: '200px', width: '100%', backgroundColor: 'black' }} />
         </ImageContainer>
+        <Links>
+          <a href={gitURL} rel="noopener noreferrer" target="_blank">
+            <img src="./img/GitHub-Light-64px.png" height="14px" alt="" />
+            <p>view code</p>
+          </a>
+          <a href={deployURL} rel="noopener noreferrer" target="_blank">
+            <img src="./img/internet.svg" height="14px" alt="" />
+            <p>view deployment</p>
+          </a>
+        </Links>
         <Description>{desc}</Description>
       </Container>
     );

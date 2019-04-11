@@ -67,6 +67,7 @@ const Content = styled.div`
   overflow: auto;
   scroll-snap-type: y mandatory;
   grid-column: 2;
+  padding: 0 1rem;
   @media (max-width: 780px) {
     grid-column: 1;
   }

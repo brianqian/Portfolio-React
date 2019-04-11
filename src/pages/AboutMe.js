@@ -13,6 +13,7 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   scroll-snap-align: start;
+  height: 100%;
 `;
 
 const Span = styled.span`
@@ -58,7 +59,7 @@ class AboutMe extends Component {
         </h1>
         <div>I'm from the Bay Area and I'm a Web Developer.</div>
         <div>
-          <p>Current skills: </p>
+          <p>Skills: </p>
           <SkillGrid>{currentSkills}</SkillGrid>
           <p>
             I've always been drawn to complicated systems and how they work. My interests of problem

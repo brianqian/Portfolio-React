@@ -6,7 +6,7 @@ import PortfolioNav from '../components/PortfolioNav';
 
 const Page = styled.div`
   max-width: 100%;
-  height: 100%;
+  min-height: 100%;
   grid-row: 2;
   grid-column: 2;
   overflow: auto;
@@ -45,10 +45,15 @@ class Portfolio extends Component {
     this.setState({ numOfProjects: portfolioData.length });
     window.addEventListener('resize', () => this.onResize(this.adjustAlignment));
   };
+
+  componentWillUnmount = () => {
+    window.removeEventListener('resize');
+  };
   onResize = () => {
     const portfolio = document.getElementById('portfolio');
     const { width } = this.state;
     const { scrollWidth } = portfolio;
+
     if (scrollWidth < width + 50 && scrollWidth > width - 50) return;
     window.requestAnimationFrame(this.adjustAlignment);
   };
@@ -56,9 +61,8 @@ class Portfolio extends Component {
   adjustAlignment = () => {
     const portfolio = document.getElementById('portfolio');
     const { numOfProjects, selectedProject } = this.state;
-    const left = portfolio.scrollWidth / numOfProjects;
-    portfolio.scrollLeft = left * selectedProject;
-    portfolio.scrollTop = 0;
+    const projectWidth = portfolio.scrollWidth / numOfProjects;
+    portfolio.scrollLeft = projectWidth * selectedProject;
     this.setState({ width: portfolio.scrollWidth });
   };
 
@@ -79,7 +83,7 @@ class Portfolio extends Component {
   };
   render() {
     const projectTitles = [];
-    const content = [];
+    const projects = [];
 
     portfolioData.forEach((item, i) => {
       projectTitles.push(
@@ -90,13 +94,14 @@ class Portfolio extends Component {
           {item.title}
         </Project>
       );
-      content.push(
+      projects.push(
         <PortfolioItem
           id={`project-${i}`}
           title={item.title}
           stack={item.stack}
           desc={item.description}
-          git={item.github}
+          gitURL={item.github}
+          deployURL={item.deployment}
         />
       );
     });
@@ -105,7 +110,7 @@ class Portfolio extends Component {
       <Page>
         <PortfolioNav>{projectTitles}</PortfolioNav>
         <ContentContainer id="portfolio" onScroll={this.onScroll}>
-          {content}
+          {projects}
         </ContentContainer>
       </Page>
     );
