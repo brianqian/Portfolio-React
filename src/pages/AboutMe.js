@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
-import aboutData from '../data/AboutData';
 
-// const Link = Scroll.Link;
 const Container = styled.div`
   background-color: #0c1821;
   color: #fff;
@@ -21,23 +19,15 @@ const Span = styled.span`
   color: #ff9007;
 `;
 
-const DeveloperLine = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  > img {
-    height: 1rem;
-    width: 1rem;
-    padding: 0.25rem;
-  }
-`;
-
 const SkillGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   width: 80%;
   margin: auto;
   color: #ff9007;
+  @media (max-width: 780px) {
+    grid-template-columns: 1fr 1fr;
+  }
   > p {
     margin: 0.5rem;
   }
@@ -48,21 +38,7 @@ class AboutMe extends Component {
     selectionIndex: 0,
   };
 
-  nextSelection = () => {
-    const nextIndex = (this.state.selectionIndex + 1) % aboutData.length;
-    this.setState({ selectionIndex: nextIndex });
-  };
-
-  prevSelection = () => {
-    let prevIndex = this.state.selectionIndex - 1;
-    if (prevIndex < 0) prevIndex = aboutData.length - 1;
-    this.setState({ selectionIndex: prevIndex });
-  };
-
   render() {
-    const moreInfo = aboutData[this.state.selectionIndex].body.map(line => {
-      return <p>{line}</p>;
-    });
     const currentSkills = [
       'Javascript',
       'React',
@@ -80,24 +56,14 @@ class AboutMe extends Component {
         <h1>
           Hi my name is <Span>Brian</Span>
         </h1>
-        {/* <DeveloperLine> */}
         <div>I'm from the Bay Area and I'm a Web Developer.</div>
-        {/* <img onClick={this.nextSelection} src="./img/up-orange.svg" alt="" />
-          <img onClick={this.prevSelection} src="./img/down-orange.svg" alt="" />
-        </DeveloperLine>
-        <div>{moreInfo}</div> */}
         <div>
           <p>Current skills: </p>
           <SkillGrid>{currentSkills}</SkillGrid>
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore veniam earum odit
-            eveniet at ratione, voluptatum aspernatur voluptas quaerat eligendi totam perferendis
-            qui pariatur ad expedita amet vitae. Numquam, quod.
-          </p>
-          <p>
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorem ipsum molestias,
-            veniam obcaecati quasi aliquid repellat reprehenderit labore sint sed blanditiis, sunt
-            adipisci nulla consequatur delectus, odio asperiores dolores! Veniam?
+            I've always been drawn to complicated systems and how they work. My interests of problem
+            solving and optimizing systems led me to the path of computer engineering. I'm always
+            looking to learn more to become a better programmer.
           </p>
         </div>
       </Container>

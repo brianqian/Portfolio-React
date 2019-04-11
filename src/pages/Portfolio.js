@@ -15,19 +15,19 @@ const Page = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
+  @media (max-width: 780px) {
+    grid-column: 1;
+  }
 `;
 
 const ContentContainer = styled.div`
   margin: 0;
   scroll-snap-type: x mandatory;
   display: flex;
-  /* color: gray; */
   width: 100%;
   overflow: auto;
   height: 90%;
 `;
-
-const NavBar = styled.div``;
 
 const Project = styled.span`
   color: ${props => (props.selected ? 'orange' : 'white')};
@@ -37,27 +37,36 @@ class Portfolio extends Component {
   state = {
     selectedProject: 0,
     numOfProjects: 0,
-    scheduledFrame: false,
+    width: 0,
+    runCount: 0,
+    resizeCount: 0,
   };
   componentDidMount = () => {
     this.setState({ numOfProjects: portfolioData.length });
-    window.addEventListener('resize', this.onResize);
+    window.addEventListener('resize', () => this.onResize(this.adjustAlignment));
   };
   onResize = () => {
-    this.adjustAlignment();
-  };
-  adjustAlignment = () => {
-    console.log('running');
     const portfolio = document.getElementById('portfolio');
-    const left = portfolio.scrollWidth / this.state.numOfProjects;
-    portfolio.scrollLeft = left * this.state.selectedProject;
+    const { width } = this.state;
+    const { scrollWidth } = portfolio;
+    if (scrollWidth < width + 50 && scrollWidth > width - 50) return;
+    window.requestAnimationFrame(this.adjustAlignment);
+  };
+
+  adjustAlignment = () => {
+    const portfolio = document.getElementById('portfolio');
+    const { numOfProjects, selectedProject } = this.state;
+    const left = portfolio.scrollWidth / numOfProjects;
+    portfolio.scrollLeft = left * selectedProject;
+    portfolio.scrollTop = 0;
+    this.setState({ width: portfolio.scrollWidth });
   };
 
   onScroll = e => {
     e.stopPropagation();
-    let element = e.target;
-    let ratio = element.scrollWidth / element.scrollLeft;
-    let selectedProject = Math.round(portfolioData.length / ratio);
+    const element = e.target;
+    const ratio = element.scrollWidth / element.scrollLeft;
+    const selectedProject = Math.round(portfolioData.length / ratio);
     if (selectedProject !== this.state.selectedProject) this.setState({ selectedProject });
   };
 
@@ -87,6 +96,7 @@ class Portfolio extends Component {
           title={item.title}
           stack={item.stack}
           desc={item.description}
+          git={item.github}
         />
       );
     });

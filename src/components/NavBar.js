@@ -12,7 +12,9 @@ const Component = styled.div`
   justify-content: center;
   justify-self: center;
   flex-direction: column;
-
+  @media (max-width: 780px) {
+    grid-column: 2;
+  }
   > li {
     list-style: none;
     padding: 1rem 0;
