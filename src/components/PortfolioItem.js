@@ -51,7 +51,7 @@ const ImageContainer = styled.div`
     box-sizing: border-box;
     width: 100%;
     max-height: 150px;
-    /* object-fit: fill; */
+    object-fit: contain;
     position: relative;
     left: 0;
     top: 0;
@@ -105,9 +105,9 @@ class PortfolioItem extends Component {
         <h1>{title} </h1>
         <Stack>{joinStack}</Stack>
         <ImageContainer onClick={this.onClick}>
-          <img src={img1} name="img1" display={this.state.img1} alt="" />
-          <img src={img2} name="img2" display={this.state.img2} alt="" />
-          <img src={img3} name="img3" display={this.state.img3} alt="" />
+          {img1 && <img src={img1} name="img1" alt="" />}
+          {img2 && <img src={img2} name="img2" alt="" />}
+          {img3 && <img src={img3} name="img3" alt="" />}
         </ImageContainer>
         <Links>
           <a href={gitURL} rel="noopener noreferrer" target="_blank">

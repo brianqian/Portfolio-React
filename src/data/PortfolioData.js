@@ -37,9 +37,9 @@ const PortfolioData = [
     stack: ['HTML/CSS', 'Javascript', 'jQuery'],
     description:
       'EventSpotter uses both the Spotify API and SeatGeek API to provide upcoming tour dates for your favorite artists or to search by location. Spotify allows the user to listen to artists during your search. A calendar is also provided to help the user plan their dates. I was responsible for our front end design and our API calls. As a first project I wanted to use this opportunity to learn CSS Grid and get more exposure to jQuery.',
-    img1: '',
-    img2: '',
-    img3: '',
+    img1: './img/eventspotter1.png',
+    img2: './img/eventspotter2.png',
+    img3: './img/eventspotter3.png',
     gitURL: 'https://github.com/brianqian/SpotifyEvents',
     deployURL: 'https://brianqian.github.io/SpotifyEvents/',
   },
@@ -48,7 +48,7 @@ const PortfolioData = [
     stack: ['HTML/CSS', 'Javascript', 'React', 'HTML', 'CSS', 'Node'],
     description:
       'A project done for 8th Light. A basic application that searches the Google Books API and cross references searches with Wikipedia. This project is built with React and ',
-    img1: '',
+    img1: './img/books1.png ',
     img2: '',
     img3: '',
     gitURL: 'https://github.com/brianqian/8thlight-react',
