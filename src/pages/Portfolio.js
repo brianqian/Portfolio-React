@@ -10,11 +10,9 @@ const Page = styled.div`
   grid-row: 2;
   grid-column: 2;
   overflow: auto;
-  background-color: #0c1820;
   scroll-snap-align: start;
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
   @media (max-width: 780px) {
     grid-column: 1;
   }
@@ -94,16 +92,8 @@ class Portfolio extends Component {
           {item.title}
         </Project>
       );
-      projects.push(
-        <PortfolioItem
-          id={`project-${i}`}
-          title={item.title}
-          stack={item.stack}
-          desc={item.description}
-          gitURL={item.github}
-          deployURL={item.deployment}
-        />
-      );
+      item = { ...item, id: `project-${i}` };
+      projects.push(<PortfolioItem {...item} />);
     });
 
     return (

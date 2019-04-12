@@ -10,7 +10,6 @@ const Container = styled.div`
   scroll-snap-align: start;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
   > h1 {
     margin: 0;
   }
@@ -36,19 +35,26 @@ const Stack = styled.div`
 const Description = styled.div`
   font-family: 'Markazi Text';
   align-self: center;
+  margin: 1rem 0;
 `;
 
 const ImageContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 1rem;
-  align-items: center;
+  align-items: end;
   @media (max-width: 780px) {
     grid-template-columns: 1fr;
   }
-  > div {
+  > img {
     margin: 1.5rem 0 0 0;
     box-sizing: border-box;
+    width: 100%;
+    max-height: 150px;
+    /* object-fit: fill; */
+    position: relative;
+    left: 0;
+    top: 0;
     @media (max-width: 780px) {
       display: none;
       :nth-child(1) {
@@ -62,6 +68,7 @@ const Links = styled.div`
   display: flex;
   width: 100%;
   justify-content: center;
+  margin: 0.5rem 0;
   > a {
     height: 100%;
     display: flex;
@@ -80,18 +87,27 @@ const Links = styled.div`
 `;
 
 class PortfolioItem extends Component {
+  state = {
+    img1: 'contain',
+    img2: 'contain',
+    img3: 'contain',
+  };
+  onClick = e => {
+    e.stopPropagation();
+    const { name } = e.target;
+    this.setState({ [name]: this.state[name] === 'contain' ? 'fill' : 'contain' });
+  };
   render() {
-    const { title, stack, desc, img, gitURL, deployURL } = this.props;
+    const { title, stack, description, gitURL, deployURL, img1, img2, img3 } = this.props;
     const joinStack = stack.map(item => <span>{item}</span>);
     return (
       <Container id={this.props.id}>
         <h1>{title} </h1>
-
         <Stack>{joinStack}</Stack>
-        <ImageContainer>
-          <div style={{ height: '200px', width: '100%', backgroundColor: 'black' }} />
-          <div style={{ height: '200px', width: '100%', backgroundColor: 'black' }} />
-          <div style={{ height: '200px', width: '100%', backgroundColor: 'black' }} />
+        <ImageContainer onClick={this.onClick}>
+          <img src={img1} name="img1" display={this.state.img1} alt="" />
+          <img src={img2} name="img2" display={this.state.img2} alt="" />
+          <img src={img3} name="img3" display={this.state.img3} alt="" />
         </ImageContainer>
         <Links>
           <a href={gitURL} rel="noopener noreferrer" target="_blank">
@@ -103,7 +119,7 @@ class PortfolioItem extends Component {
             <p>view deployment</p>
           </a>
         </Links>
-        <Description>{desc}</Description>
+        <Description>{description}</Description>
       </Container>
     );
   }

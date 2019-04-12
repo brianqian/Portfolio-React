@@ -9,6 +9,7 @@ const Container = styled.div`
   max-width: 100%;
   user-select: none;
   justify-content: space-evenly;
+  margin: 1rem 0;
   > * {
     cursor: pointer;
   }
