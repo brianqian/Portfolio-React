@@ -63,7 +63,7 @@ const ContentContainer = styled.div`
 //border target (rgb (255, 144, 10)
 //change 0, -111, -245
 const Content = styled.div`
-  max-height: 100%;
+  min-height: 100%;
   overflow: auto;
   scroll-snap-type: y mandatory;
   grid-column: 2;
@@ -105,7 +105,7 @@ class MainPage extends Component {
           <NavBar scrollFn={this.navBarOnClick} selected={this.state.selectedSection} />
           <Content id="content" onScroll={this.selectActiveOnScroll}>
             <AboutMe />
-            <Portfolio />
+            <Portfolio currentPage={this.state.selectedSection} />
             <Contact />
           </Content>
         </ContentContainer>

@@ -13,6 +13,7 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   scroll-snap-align: start;
+  overflow: auto;
   height: 100%;
 `;
 
@@ -51,7 +52,7 @@ class AboutMe extends Component {
       'Jest',
       'Enzyme',
       'jQuery',
-    ].map(skill => <p>{skill}</p>);
+    ].map((skill, i) => <p key={i}>{skill}</p>);
     return (
       <Container id="about">
         <h1>
@@ -62,8 +63,8 @@ class AboutMe extends Component {
           <p>Skills: </p>
           <SkillGrid>{currentSkills}</SkillGrid>
           <p>
-            I've always been drawn to complicated systems and how they work. My interests of problem
-            solving and optimizing systems led me to the path of computer engineering. I'm always
+            I've always been drawn to complicated systems and how they work. My passion for problem
+            solving and optimizing systems are what led me to computer engineering. I'm always
             looking to learn more to become a better programmer.
           </p>
         </div>

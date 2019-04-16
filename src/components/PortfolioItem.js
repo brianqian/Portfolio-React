@@ -20,6 +20,13 @@ const Stack = styled.div`
   width: 100%;
   justify-content: center;
   cursor: default;
+  > p {
+    display: none;
+    font-size: 0.65em;
+    @media (max-width: 780px) {
+      display: block;
+    }
+  }
   > span {
     background-color: #ff9007;
     font-size: 0.65em;
@@ -99,11 +106,15 @@ class PortfolioItem extends Component {
   };
   render() {
     const { title, stack, description, gitURL, deployURL, img1, img2, img3 } = this.props;
-    const joinStack = stack.map(item => <span>{item}</span>);
+    const joinStack = stack.map((tech, i) => <span key={`${title}-${i}`}>{tech}</span>);
+    const mobileJoinStack = [<p key={title}>Built with: {stack.join(', ')}</p>];
     return (
-      <Container id={this.props.id}>
+      <Container>
         <h1>{title} </h1>
-        <Stack>{joinStack}</Stack>
+        <Stack>
+          {joinStack}
+          {mobileJoinStack}
+        </Stack>
         <ImageContainer onClick={this.onClick}>
           {img1 && <img src={img1} name="img1" alt="" />}
           {img2 && <img src={img2} name="img2" alt="" />}
