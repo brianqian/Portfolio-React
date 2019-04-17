@@ -6,7 +6,6 @@ const Container = styled.div`
   color: #fff;
   font-family: 'Cutive Mono';
   font-size: 1.15em;
-  text-align: center;
   border-radius: 5px;
   box-sizing: border-box;
   min-height: 100%;
@@ -25,13 +24,28 @@ const SkillGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   width: 80%;
-  margin: auto;
+  margin: 2rem auto;
   color: #ff9007;
   @media (max-width: 780px) {
     grid-template-columns: 1fr 1fr;
   }
   > p {
-    margin: 0.5rem;
+    margin: 0;
+  }
+`;
+
+const AltFont = styled.p`
+  font-family: 'Economica';
+  margin: 0;
+`;
+
+const Contact = styled.div`
+  display: flex;
+  flex: 1;
+  width: 100%;
+  justify-content: flex-end;
+  > a {
+    margin: 0 0.5rem;
   }
 `;
 
@@ -58,16 +72,25 @@ class AboutMe extends Component {
         <h1>
           Hi my name is <Span>Brian</Span>
         </h1>
-        <div>I'm from the Bay Area and I'm a Web Developer.</div>
-        <div>
-          <p>Skills: </p>
+        <AltFont>
+          I'm from the Bay Area and I'm a full stack Web Developer specializing in React.
+        </AltFont>
+        <div style={{ flex: '9' }}>
           <SkillGrid>{currentSkills}</SkillGrid>
-          <p>
+          <AltFont>
             I've always been drawn to complicated systems and how they work. My passion for problem
             solving and optimizing systems are what led me to computer engineering. I'm always
             looking to learn more to become a better programmer.
-          </p>
+          </AltFont>
         </div>
+        <Contact>
+          <a href="https://github.com/brianqian/">
+            <img src="./img/GitHub-Light-64px.png" height="30px" alt="" />
+          </a>
+          <a href="https://www.linkedin.com/in/brian-qian/">
+            <img src="./img/In-White-41px.png" height="30px" alt="" />
+          </a>
+        </Contact>
       </Container>
     );
   }

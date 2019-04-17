@@ -3,7 +3,7 @@ import styled, { createGlobalStyle } from 'styled-components';
 import AboutMe from '../pages/AboutMe';
 import Portfolio from '../pages/Portfolio';
 import NavBar from '../components/NavBar';
-import Contact from '../pages/Contact';
+import ProgressPage from './ProgressPage';
 
 const GlobalStyle = createGlobalStyle`
 @import url('https://fonts.googleapis.com/css?family=Cutive+Mono|Economica|Markazi+Text|Open+Sans');
@@ -41,7 +41,6 @@ const ContentContainer = styled.div`
   grid-template-columns: 5% 90% 5%;
   grid-template-rows: 100%;
   background-color: #0c1821;
-  color: #d6bb33;
   font-family: 'Cutive Mono';
   font-size: 1.15em;
   text-align: center;
@@ -106,7 +105,7 @@ class MainPage extends Component {
           <Content id="content" onScroll={this.selectActiveOnScroll}>
             <AboutMe />
             <Portfolio currentPage={this.state.selectedSection} />
-            <Contact />
+            <ProgressPage />
           </Content>
         </ContentContainer>
       </Container>
