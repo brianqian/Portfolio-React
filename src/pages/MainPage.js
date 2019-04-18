@@ -1,12 +1,12 @@
-import React, { Component } from 'react';
-import styled, { createGlobalStyle } from 'styled-components';
-import AboutMe from '../pages/AboutMe';
-import Portfolio from '../pages/Portfolio';
-import NavBar from '../components/NavBar';
-import ProgressPage from './ProgressPage';
+import React, { Component } from "react";
+import styled, { createGlobalStyle } from "styled-components";
+import AboutMe from "../pages/AboutMe";
+import Portfolio from "../pages/Portfolio";
+import NavBar from "../components/NavBar";
+import ProgressPage from "./ProgressPage";
 
 const GlobalStyle = createGlobalStyle`
-@import url('https://fonts.googleapis.com/css?family=Cutive+Mono|Economica|Markazi+Text|Open+Sans');
+@import url('https://fonts.googleapis.com/css?family=Economica|Markazi+Text');
 body, html{
   margin: 0;
   font-size: 100%;
@@ -41,7 +41,7 @@ const ContentContainer = styled.div`
   grid-template-columns: 5% 90% 5%;
   grid-template-rows: 100%;
   background-color: #0c1821;
-  font-family: 'Cutive Mono';
+  font-family: "Cutive Mono";
   font-size: 1.15em;
   text-align: center;
   align-self: center;
@@ -59,8 +59,7 @@ const ContentContainer = styled.div`
     border: none;
   }
 `;
-//border target (rgb (255, 144, 10)
-//change 0, -111, -245
+
 const Content = styled.div`
   min-height: 100%;
   overflow: auto;
@@ -80,8 +79,7 @@ class MainPage extends Component {
   };
 
   selectActiveOnScroll = e => {
-    const content = e.target;
-    const { scrollHeight, scrollTop } = content;
+    const { scrollHeight, scrollTop } = e.currentTarget;
     const ratio = scrollHeight / scrollTop;
     const selectedSection = Math.round(this.state.numOfSections / ratio);
     if (selectedSection !== this.state.selectedSection)
@@ -90,9 +88,9 @@ class MainPage extends Component {
 
   navBarOnClick = pageIndex => {
     const { selectedSection, numOfSections } = this.state;
-    const content = document.getElementById('content');
+    const content = document.getElementById("content");
     const distance = (pageIndex - selectedSection) * (content.scrollHeight / numOfSections);
-    content.scrollBy({ top: distance, behavior: 'smooth' });
+    content.scrollBy({ top: distance, behavior: "smooth" });
   };
 
   render() {

@@ -5,10 +5,16 @@ import ProgressData from "../data/ProgressData";
 
 const Container = styled.div`
   min-height: 100%;
+  max-height: 100%;
   scroll-snap-align: start;
   color: white;
   font-family: "Economica";
   padding: 1rem;
+  overflow: auto;
+  > p {
+    font-family: "Markazi Text";
+    font-size: 1.15em;
+  }
 `;
 
 const Wrapper = styled.div`

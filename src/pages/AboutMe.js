@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
-import styled from 'styled-components';
+import React, { Component } from "react";
+import styled from "styled-components";
 
 const Container = styled.div`
   background-color: #0c1821;
   color: #fff;
-  font-family: 'Cutive Mono';
+  font-family: "Economica";
   font-size: 1.15em;
   border-radius: 5px;
   box-sizing: border-box;
@@ -14,10 +14,6 @@ const Container = styled.div`
   scroll-snap-align: start;
   overflow: auto;
   height: 100%;
-`;
-
-const Span = styled.span`
-  color: #ff9007;
 `;
 
 const SkillGrid = styled.div`
@@ -35,7 +31,8 @@ const SkillGrid = styled.div`
 `;
 
 const AltFont = styled.p`
-  font-family: 'Economica';
+  font-family: "Markazi Text";
+  font-size: 1.15em;
   margin: 0;
 `;
 
@@ -56,34 +53,36 @@ class AboutMe extends Component {
 
   render() {
     const currentSkills = [
-      'Javascript',
-      'React',
-      'Redux',
-      'Node',
-      'Express',
-      'SQL',
-      'MongoDB',
-      'Jest',
-      'Enzyme',
-      'jQuery',
+      "Javascript",
+      "React",
+      "Redux",
+      "Node",
+      "Express",
+      "SQL",
+      "MongoDB",
+      "Jest",
+      "Enzyme",
+      "jQuery",
     ].map((skill, i) => <p key={i}>{skill}</p>);
     return (
       <Container id="about">
         <h1>
-          Hi my name is <Span>Brian</Span>
+          Hi my name is <span style={{ color: "#ff9007" }}>Brian</span>
         </h1>
         <AltFont>
           I'm from the Bay Area and I'm a full stack Web Developer specializing in React.
         </AltFont>
-        <div style={{ flex: '9' }}>
+        <div style={{ flex: "9" }}>
           <SkillGrid>{currentSkills}</SkillGrid>
           <AltFont>
             I've always been drawn to complicated systems and how they work. My passion for problem
             solving and optimizing systems are what led me to computer engineering. I'm always
-            looking to learn more to become a better programmer.
+            looking to learn more to become a better programmer. Currently I'm working on picking up
+            Postgres, GraphQL, and making an online Codenames game.
           </AltFont>
         </div>
         <Contact>
+          contact me:
           <a href="https://github.com/brianqian/">
             <img src="./img/GitHub-Light-64px.png" height="30px" alt="" />
           </a>

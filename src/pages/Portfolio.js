@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
-import styled from 'styled-components';
-import PortfolioItem from '../components/PortfolioItem';
-import portfolioData from '../data/PortfolioData';
-import PortfolioNav from '../components/PortfolioNav';
+import React, { Component } from "react";
+import styled from "styled-components";
+import PortfolioItem from "../components/PortfolioItem";
+import portfolioData from "../data/PortfolioData";
+import PortfolioNav from "../components/PortfolioNav";
 
 const Page = styled.div`
   max-width: 100%;
@@ -27,8 +27,8 @@ const ContentContainer = styled.div`
   height: 90%;
 `;
 
-const Project = styled.span`
-  color: ${props => (props.selected ? 'orange' : 'white')};
+const ProjectTitle = styled.span`
+  color: ${props => (props.selected ? "orange" : "white")};
 `;
 
 class Portfolio extends Component {
@@ -39,17 +39,17 @@ class Portfolio extends Component {
   };
   componentDidMount = () => {
     this.setState({ numOfProjects: portfolioData.length });
-    window.addEventListener('resize', this.onResize);
+    window.addEventListener("resize", this.onResize);
   };
 
   componentWillUnmount = () => {
-    window.removeEventListener('resize');
+    window.removeEventListener("resize");
   };
 
   onResize = () => {
     //retains project alignment on resize
-    const portfolio = document.getElementById('portfolio');
-    const content = document.getElementById('content');
+    const portfolio = document.getElementById("portfolio");
+    const content = document.getElementById("content");
     const { prevWidth, numOfProjects, selectedProject } = this.state;
     const { scrollWidth } = portfolio;
     const NUM_OF_SECTIONS = 3;
@@ -72,11 +72,11 @@ class Portfolio extends Component {
 
   navBarOnClick = targetProject => {
     //smooth scrolls the page on click of project
-    const portfolio = document.getElementById('portfolio');
+    const portfolio = document.getElementById("portfolio");
     const { scrollWidth } = portfolio;
     const { selectedProject, numOfProjects } = this.state;
     const distance = (targetProject - selectedProject) * (scrollWidth / numOfProjects);
-    portfolio.scrollBy({ left: distance, behavior: 'smooth' });
+    portfolio.scrollBy({ left: distance, behavior: "smooth" });
   };
   render() {
     const projectTitles = [];
@@ -84,13 +84,13 @@ class Portfolio extends Component {
 
     portfolioData.forEach((item, i) => {
       projectTitles.push(
-        <Project
+        <ProjectTitle
           onClick={() => this.navBarOnClick(i)}
           selected={this.state.selectedProject === i ? true : false}
           key={`project-title-${i}`}
         >
           {item.title}
-        </Project>
+        </ProjectTitle>
       );
       projects.push(<PortfolioItem {...item} key={`project-${i}`} />);
     });
