@@ -6,6 +6,7 @@ import ProgressData from "../data/ProgressData";
 const Container = styled.div`
   min-height: 100%;
   max-height: 100%;
+  box-sizing: border-box;
   scroll-snap-align: start;
   color: ${props => props.theme.text};
   font-family: ${props => props.theme.mainFont};
@@ -14,6 +15,7 @@ const Container = styled.div`
   > p {
     font-family: ${props => props.theme.subFont};
     font-size: 1.15em;
+    margin: 0;
   }
 `;
 
@@ -21,6 +23,7 @@ const GridWrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   grid-gap: 1rem;
+  margin: 1rem;
 `;
 
 class ProgressPage extends Component {
@@ -46,10 +49,22 @@ class ProgressPage extends Component {
       <Container>
         <h1>Resource Page</h1>
         <p>
-          I've personally never been a fan of the contact page commonly found in portfolios. I
-          thought I would use that space to give a better idea of how I became a programmer by
+          I'm personally not a fan of the contact page usually found here. If you want to reach me,
+          I'm on{" "}
+          <a
+            href="https://www.linkedin.com/in/brian-qian/"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            LinkedIn
+          </a>{" "}
+          or email me at qian.brian@gmail.com.
+        </p>
+        <p>
+          I thought I would use that space to give a better idea of how I became a programmer by
           listing some of the resources I've used and currently use.
         </p>
+
         <GridWrapper>{items}</GridWrapper>
       </Container>
     );

@@ -63,6 +63,7 @@ const ImageContainer = styled.div`
     left: 0;
     top: 0;
     @media (max-width: 780px) {
+      margin: 0;
       display: none;
       :nth-child(1) {
         display: block;

@@ -12,9 +12,12 @@ body, html{
   margin: 0;
   font-size: 100%;
 }
-::-webkit-scrollbar {
-    width: 0px;
-    background: transparent;  
+a{
+  color: ${props => props.theme.text};
+}
+::-webkit-scrollbar{
+  width: 0;
+  background: transparent;
 }
 `;
 
@@ -42,7 +45,6 @@ const ContentContainer = styled.div`
   grid-template-columns: 5% 90% 5%;
   grid-template-rows: 100%;
   background-color: ${props => props.theme.fg};
-  font-family: "Cutive Mono";
   font-size: ${props => props.theme.pSize};
   text-align: center;
   align-self: center;

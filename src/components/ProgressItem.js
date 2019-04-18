@@ -54,18 +54,17 @@ const Overlay = styled.div`
     text-decoration: none;
     :hover {
       color: ${props => props.theme.accent};
+      text-decoration: underline;
     }
   }
 `;
 const InfoButton = styled.div`
-  width: 80px;
-  height: 15px;
-  padding: 5px;
+  padding: 5px 8px;
   color: ${props => props.theme.text};
   border: 1px solid ${props => props.theme.text};
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   font-size: 0.55em;
-  margin: 1rem;
+  margin: 0.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -79,10 +78,7 @@ class ProgressItem extends Component {
     expandInfo: false,
   };
   handleClick = () => {
-    this.setState({ expandInfo: true });
-  };
-  resetState = () => {
-    this.setState({ expandInfo: false });
+    this.setState({ expandInfo: !this.state.expandInfo });
   };
 
   render() {
@@ -96,10 +92,10 @@ class ProgressItem extends Component {
     return (
       <Container>
         <ImgContainer>
-          <Overlay onMouseLeave={this.resetState}>
+          <Overlay>
             {expandInfo && moreInfo}
             {!expandInfo && description}
-            {!expandInfo && <InfoButton onClick={this.handleClick}>More Info</InfoButton>}
+            <InfoButton onClick={this.handleClick}>{expandInfo ? "Back" : "More Info"}</InfoButton>
           </Overlay>
           <Image style={{ backgroundColor: this.props.color }}>
             <h2>{title}</h2>

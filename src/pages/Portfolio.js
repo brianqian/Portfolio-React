@@ -29,6 +29,7 @@ const ContentContainer = styled.div`
 
 const ProjectTitle = styled.span`
   color: ${props => (props.selected ? props.theme.accent : props.theme.text)};
+  text-decoration: ${props => (props.selected ? "underline" : "none")};
 `;
 
 class Portfolio extends Component {

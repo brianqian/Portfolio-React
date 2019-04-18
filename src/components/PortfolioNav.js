@@ -12,6 +12,9 @@ const Container = styled.div`
   margin: 1rem 0;
   > * {
     cursor: pointer;
+    :hover {
+      text-decoration: underline;
+    }
   }
   @media (max-width: 780px) {
     padding: 0;

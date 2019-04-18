@@ -37,10 +37,6 @@ const SkillGrid = styled.div`
 `;
 
 class AboutMe extends Component {
-  state = {
-    selectionIndex: 0,
-  };
-
   render() {
     const currentSkills = [
       "Javascript",
@@ -79,7 +75,8 @@ class AboutMe extends Component {
           I've always been drawn to complicated systems and how they work. My passion for problem
           solving and optimizing systems are what led me to computer engineering. I'm always looking
           to learn more to become a better programmer. Currently I'm working on picking up Postgres,
-          GraphQL, and making an online Codenames based game.
+          GraphQL, and making an online Codenames based game. I've always liked to build things by
+          hand; if I can avoid using a library, I'd prefer to do make it myself.
         </p>
       </Container>
     );

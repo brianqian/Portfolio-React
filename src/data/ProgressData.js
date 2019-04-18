@@ -21,7 +21,7 @@ const ProgressData = [
   {
     title: "CS50 @ Harvard",
     description:
-      "David Malan is one of the best teachers out there and the material CS50 covers is comprehensive and thorough. The original course focuses on computer science fundamentals over web development, primarily using C to teach.",
+      "David Malan's original CS50 focuses on computer science fundamentals over web development, primarily using C to teach.",
     subTitle: ["Intro to Computer Science", "Web Programming with Python and Javascript"],
     subURLs: [
       "https://www.edx.org/course/cs50s-introduction-to-computer-science",
