@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
-import styled from 'styled-components';
+import React, { Component } from "react";
+import styled from "styled-components";
 
 const Container = styled.div`
-  font-family: 'Economica';
-  font-size: 1.3em;
-  color: white;
+  font-family: ${props => props.theme.mainFont};
+  font-size: ${props => props.theme.pSize};
+  color: ${props => props.theme.text};
   min-width: 100%;
   max-width: 100%;
   scroll-snap-align: start;
@@ -28,7 +28,7 @@ const Stack = styled.div`
     }
   }
   > span {
-    background-color: #ff9007;
+    background-color: ${props => props.theme.accent};
     font-size: 0.65em;
     border-radius: 3px;
     padding: 4px 8px;
@@ -40,7 +40,7 @@ const Stack = styled.div`
 `;
 
 const Description = styled.div`
-  font-family: 'Markazi Text';
+  font-family: ${props => props.theme.subFont};
   align-self: center;
   margin: 1rem 0;
 `;
@@ -84,30 +84,20 @@ const Links = styled.div`
     text-decoration: none;
     > p {
       font-size: 0.75em;
-      color: white;
+      color: ${props => props.theme.text};
       margin: 0 0.5rem;
       :hover {
-        color: #ff9007;
+        color: ${props => props.theme.accent};
       }
     }
   }
 `;
 
 class PortfolioItem extends Component {
-  state = {
-    img1: 'contain',
-    img2: 'contain',
-    img3: 'contain',
-  };
-  onClick = e => {
-    e.stopPropagation();
-    const { name } = e.target;
-    this.setState({ [name]: this.state[name] === 'contain' ? 'fill' : 'contain' });
-  };
   render() {
     const { title, stack, description, gitURL, deployURL, img1, img2, img3 } = this.props;
     const joinStack = stack.map((tech, i) => <span key={`${title}-${i}`}>{tech}</span>);
-    const mobileJoinStack = [<p key={title}>Built with: {stack.join(', ')}</p>];
+    const mobileJoinStack = [<p key={title}>Built with: {stack.join(", ")}</p>];
     return (
       <Container>
         <h1>{title} </h1>

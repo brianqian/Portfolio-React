@@ -28,7 +28,7 @@ const ContentContainer = styled.div`
 `;
 
 const ProjectTitle = styled.span`
-  color: ${props => (props.selected ? "orange" : "white")};
+  color: ${props => (props.selected ? props.theme.accent : props.theme.text)};
 `;
 
 class Portfolio extends Component {

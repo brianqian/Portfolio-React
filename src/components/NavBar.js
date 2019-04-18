@@ -1,5 +1,5 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from "react";
+import styled from "styled-components";
 
 const Component = styled.div`
   margin: 0;
@@ -30,24 +30,24 @@ function NavBar({ selected, scrollFn }) {
       <li>
         <img
           onClick={() => scrollFn(0)}
-          src={`./img/circle-${selected === 0 ? 'fill' : 'outline'}-white.svg`}
-          height="15px"
+          src={`./img/circle-${selected === 0 ? "fill" : "outline"}-white.svg`}
+          height="20em"
           alt=""
         />
       </li>
       <li>
         <img
           onClick={() => scrollFn(1)}
-          src={`./img/circle-${selected === 1 ? 'fill' : 'outline'}-white.svg`}
-          height="15px"
+          src={`./img/circle-${selected === 1 ? "fill" : "outline"}-white.svg`}
+          height="20em"
           alt=""
         />
       </li>
       <li>
         <img
           onClick={() => scrollFn(2)}
-          src={`./img/circle-${selected === 2 ? 'fill' : 'outline'}-white.svg`}
-          height="15px"
+          src={`./img/circle-${selected === 2 ? "fill" : "outline"}-white.svg`}
+          height="20em"
           alt=""
         />
       </li>

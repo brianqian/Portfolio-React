@@ -7,12 +7,12 @@ const Container = styled.div`
   min-height: 100%;
   max-height: 100%;
   scroll-snap-align: start;
-  color: white;
-  font-family: "Economica";
+  color: ${props => props.theme.text};
+  font-family: ${props => props.theme.mainFont};
   padding: 1rem;
   overflow: auto;
   > p {
-    font-family: "Markazi Text";
+    font-family: ${props => props.theme.subFont};
     font-size: 1.15em;
   }
 `;

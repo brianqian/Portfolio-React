@@ -41,19 +41,19 @@ const Overlay = styled.div`
   justify-content: center;
   user-select: none;
   align-items: center;
-  font-family: "Markazi Text";
+  font-family: ${props => props.theme.subFont};
   background-color: #00000065;
-  color: white;
+  color: ${props => props.theme.text};
   transition: all 250ms;
   ${ImgContainer}:hover & {
     transform: translateY(100%);
     z-index: 3;
   }
   > a {
-    color: white;
+    color: ${props => props.theme.text};
     text-decoration: none;
     :hover {
-      color: #ff9007;
+      color: ${props => props.theme.accent};
     }
   }
 `;
@@ -61,8 +61,8 @@ const InfoButton = styled.div`
   width: 80px;
   height: 15px;
   padding: 5px;
-  color: white;
-  border: 1px solid white;
+  color: ${props => props.theme.text};
+  border: 1px solid ${props => props.theme.text};
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   font-size: 0.55em;
   margin: 1rem;
