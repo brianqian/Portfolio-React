@@ -19,7 +19,7 @@ const Image = styled.div`
   position: absolute;
   left: 0;
   top: 0;
-  background-color: teal;
+  background-color: #009efa;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -101,7 +101,7 @@ class ProgressItem extends Component {
             {!expandInfo && description}
             {!expandInfo && <InfoButton onClick={this.handleClick}>More Info</InfoButton>}
           </Overlay>
-          <Image>
+          <Image style={{ backgroundColor: this.props.color }}>
             <h2>{title}</h2>
           </Image>
         </ImgContainer>

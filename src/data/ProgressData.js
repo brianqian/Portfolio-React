@@ -53,8 +53,12 @@ const ProgressData = [
     title: "Reddit",
     description:
       "Reddit's various web development subreddits provide an interactive resource for new and seasoned developers.",
-    subTitle: ["/r/webdev", "/r/learnjavascript", "/r/"],
-    subURLs: ["https://www.reddit.com/r/webdev/", "https://www.reddit.com/r/learnjavascript/"],
+    subTitle: ["/r/webdev", "/r/learnjavascript", "/r/learnprogramming"],
+    subURLs: [
+      "https://www.reddit.com/r/webdev/",
+      "https://www.reddit.com/r/learnjavascript/",
+      "https://www.reddit.com/r/learnprogramming/",
+    ],
   },
   {
     title: "Data Structures & Algorithms",
@@ -75,9 +79,19 @@ const ProgressData = [
   },
   {
     title: "Misc.",
-    description: "A collection of random resources I found useful",
-    subTitle: ["Open Source React Project"],
-    subURLs: ["https://react.explore-tech.org/"],
+    description: "More useful resources",
+    subTitle: [
+      "Open Source React Project",
+      "Fisher-Yates Shuffle",
+      "Sieve of Eratosthenes",
+      "Testing with Jest & Enzyme",
+    ],
+    subURLs: [
+      "https://react.explore-tech.org/",
+      "https://bost.ocks.org/mike/shuffle/",
+      "https://www.craigrodrigues.com/blog/the-sieve-of-eratosthenes-in-javascript",
+      "https://blog.bitsrc.io/how-to-test-react-components-using-jest-and-enzyme-fab851a43875",
+    ],
   },
 ];
 

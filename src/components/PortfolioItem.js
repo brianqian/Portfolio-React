@@ -106,13 +106,13 @@ class PortfolioItem extends Component {
           {mobileJoinStack}
         </Stack>
         <ImageContainer onClick={this.onClick}>
-          {img1 && <img src={img1} name="img1" alt="" />}
-          {img2 && <img src={img2} name="img2" alt="" />}
-          {img3 && <img src={img3} name="img3" alt="" />}
+          {img1 && <img src={img1} alt="" />}
+          {img2 && <img src={img2} alt="" />}
+          {img3 && <img src={img3} alt="" />}
         </ImageContainer>
         <Links>
           <a href={gitURL} rel="noopener noreferrer" target="_blank">
-            <img src="./img/GitHub-Light-64px.png" height="14px" alt="" />
+            <img src="./img/social_icons/GitHub-Light-64px.png" height="14px" alt="" />
             <p>view code</p>
           </a>
           <a href={deployURL} rel="noopener noreferrer" target="_blank">

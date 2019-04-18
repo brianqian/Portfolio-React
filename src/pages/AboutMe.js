@@ -62,11 +62,15 @@ class AboutMe extends Component {
         <p>I'm from the Bay Area and I'm a full stack web developer specializing in React.</p>
         <p>
           Find me here:
-          <a href="https://github.com/brianqian/">
-            <img src="./img/GitHub-Light-64px.png" height="30px" alt="" />
+          <a href="https://github.com/brianqian/" rel="noopener noreferrer" target="_blank">
+            <img src="./img/social_icons/GitHub-Light-64px.png" height="30px" alt="" />
           </a>
-          <a href="https://www.linkedin.com/in/brian-qian/">
-            <img src="./img/In-White-41px.png" height="30px" alt="" />
+          <a
+            href="https://www.linkedin.com/in/brian-qian/"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            <img src="./img/social_icons/In-White-41px.png" height="30px" alt="" />
           </a>
         </p>
 

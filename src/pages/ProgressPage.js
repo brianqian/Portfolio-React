@@ -17,15 +17,31 @@ const Container = styled.div`
   }
 `;
 
-const Wrapper = styled.div`
+const GridWrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   grid-gap: 1rem;
 `;
 
 class ProgressPage extends Component {
+  state = {
+    colors: ["#009efa", "#91009e", "#006941", "#fa7000", "#a50000", "#484e6d"],
+  };
+
+  componentDidMount = () => {
+    const copy = [...this.state.colors];
+    let n = copy.length;
+    while (n) {
+      const i = Math.floor(Math.random() * n--);
+      [copy[i], copy[n]] = [copy[n], copy[i]];
+    }
+    this.setState({ colors: copy });
+  };
+
   render() {
-    const items = ProgressData.map(item => <ProgressItem {...item} />);
+    const items = ProgressData.map((item, i) => (
+      <ProgressItem color={this.state.colors[i]} {...item} />
+    ));
     return (
       <Container>
         <h1>Resource Page</h1>
@@ -34,7 +50,7 @@ class ProgressPage extends Component {
           thought I would use that space to give a better idea of how I became a programmer by
           listing some of the resources I've used and currently use.
         </p>
-        <Wrapper>{items}</Wrapper>
+        <GridWrapper>{items}</GridWrapper>
       </Container>
     );
   }
