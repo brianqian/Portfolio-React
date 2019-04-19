@@ -10,7 +10,7 @@ const GlobalStyle = createGlobalStyle`
 @import url('https://fonts.googleapis.com/css?family=Economica|Markazi+Text');
 body, html{
   margin: 0;
-  font-size: 100%;
+
 }
 a{
   color: ${props => props.theme.text};
