@@ -13,6 +13,9 @@ const Container = styled.div`
   scroll-snap-align: start;
   overflow: auto;
   height: 100%;
+  >h1{
+    margin: 1.5rem;
+  }
   > p {
     font-family: ${props => props.theme.subFont};
     margin: 0;
@@ -53,9 +56,9 @@ class AboutMe extends Component {
     return (
       <Container id="about">
         <h1>
-          Hi my name is <span style={{ color: "#ff9007" }}>Brian</span>
+          Hi I'm <span style={{ color: "#ff9007" }}>Brian Qian...</span>
         </h1>
-        <p>I'm from the Bay Area and I'm a full stack web developer specializing in React.</p>
+        <p>and I'm a full stack web developer currently looking for a junior dev role.</p>
         <p>
           Find me here:
           <a href="https://github.com/brianqian/" rel="noopener noreferrer" target="_blank">
