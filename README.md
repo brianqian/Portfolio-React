@@ -1,1 +1,1 @@
-Deployed at https://brianqian.github.io/portfolio-react/
+Deployed at https://brianqian.com
